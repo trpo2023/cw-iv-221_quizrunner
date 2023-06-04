@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -pedantic -std=c99
-LDFLAGS = -L/usr/local/lib -lcunit
+LDFLAGS = -L/usr/local/lib 
 SRC_DIR = src
 TEST_DIR = test
 OBJ_DIR = obj
