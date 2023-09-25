@@ -13,7 +13,6 @@ CTEST(checkAnswer1, test1)
     ASSERT_EQUAL(a, b);
 }
 
-
 CTEST(Question1, test2)
 {
     struct Question txt = createQuestion("aaaaaa", "1");
