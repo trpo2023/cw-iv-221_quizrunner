@@ -13,13 +13,8 @@ CTEST(checkAnswer1, test1)
     ASSERT_EQUAL(a, b);
 }
 
-CTEST(returnscore1, test2)
-{
-    int a = 5;
-    int b = 5;
-    ASSERT_EQUAL(a, b);
-}
-CTEST(Question1, test3)
+
+CTEST(Question1, test2)
 {
     struct Question txt = createQuestion("aaaaaa", "1");
     struct Question ch1 = createQuestion(txt.text, txt.answer);
