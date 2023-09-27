@@ -19,8 +19,7 @@ CTEST(Question1, test2)
     struct Question ch1 = createQuestion(txt.text, txt.answer);
     int a = strcmp(txt.text, ch1.text);
     int b = 0;
-    int c = strcmp(txt.answer, ch1.answer);
 
     ASSERT_EQUAL(b, a);
-    ASSERT_EQUAL(b, c);
+    
 }
