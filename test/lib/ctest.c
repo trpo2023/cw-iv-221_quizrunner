@@ -21,5 +21,4 @@ CTEST(Question1, test2)
     int b = 0;
 
     ASSERT_EQUAL(b, a);
-    
 }
