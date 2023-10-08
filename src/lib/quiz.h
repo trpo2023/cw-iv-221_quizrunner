@@ -6,6 +6,7 @@ struct Question {
     char answer[256];
 };
 
+
 struct Question createQuestion(const char* text, const char* answer);
 int checkAnswer(const char* userAnswer, const char* correctAnswer);
 void shuffleQuestions(struct Question questions[], int numQuestions);
