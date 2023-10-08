@@ -1,18 +1,38 @@
 #include "lib/quiz.h"
 #include <stdio.h>
+#include <string.h>
+#define MAX_LINE_LENGTH 1000
 
 int main()
 {
+
     struct Question questions[5];
 
-    questions[0] = createQuestion("Какая столица Франции?", "Париж");
-    questions[1] = createQuestion("Сколько планет в солнечной системе?", "8");
-    questions[2]
-            = createQuestion("Какой год начала Второй мировой войны?", "1939");
-    questions[3] = createQuestion(
-            "Какой химический элемент имеет символ 'H'?", "Водород");
-    questions[4] = createQuestion(
-            "Какой самый высокий горный пик в мире?", "Эверест");
+    FILE *file = fopen("../src/app/questions.txt", "r");
+    
+    char line[MAX_LINE_LENGTH];
+    int lineNumber = 0;
+    int i = 0;
+    while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
+        
+        if((line[strlen(line) - 1]) == '\n'){
+            line[strlen(line) - 1] = '\0';
+        }
+        if(lineNumber % 2 == 0){
+            strcpy(questions[i].text, line);
+            
+        }
+        else{
+            strcpy(questions[i].answer, line);
+            i++;
+        }
+        lineNumber++;
+
+        
+
+    }
+    
+    fclose(file);
 
     shuffleQuestions(questions, 5);
 
