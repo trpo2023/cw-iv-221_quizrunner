@@ -1,44 +1,38 @@
-#include "lib/quiz.h"
 #include <stdio.h>
 #include <string.h>
+
+#include "lib/quiz.h"
 #define MAX_LINE_LENGTH 1000
 
-int main()
-{
+int main() {
+  struct Question questions[5];
 
-    struct Question questions[5];
+  FILE *file = fopen("../src/app/questions.txt", "r");
 
-    FILE *file = fopen("../src/app/questions.txt", "r");
-    
-    char line[MAX_LINE_LENGTH];
-    int lineNumber = 0;
-    int i = 0;
-    while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
-        
-        if((line[strlen(line) - 1]) == '\n'){
-            line[strlen(line) - 1] = '\0';
-        }
-        if(lineNumber % 2 == 0){
-            strcpy(questions[i].text, line);
-            
-        }
-        else{
-            strcpy(questions[i].answer, line);
-            i++;
-        }
-        lineNumber++;
-
-        
-
+  char line[MAX_LINE_LENGTH];
+  int lineNumber = 0;
+  int i = 0;
+  while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
+    if ((line[strlen(line) - 1]) == '\n') {
+      line[strlen(line) - 1] = '\0';
     }
-    
-    fclose(file);
+    if (lineNumber % 2 == 0) {
+      strcpy(questions[i].text, line);
 
-    shuffleQuestions(questions, 5);
+    } else {
+      strcpy(questions[i].answer, line);
+      i++;
+    }
+    lineNumber++;
+  }
 
-    int finalScore = runQuiz(questions, 5);
+  fclose(file);
 
-    printf("Ваш итоговый балл: %d\n", finalScore);
+  shuffleQuestions(questions, 5);
 
-    return 0;
+  int finalScore = runQuiz(questions, 5);
+
+  printf("Ваш итоговый балл: %d\n", finalScore);
+
+  return 0;
 }
