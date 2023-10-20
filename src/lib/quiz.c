@@ -6,7 +6,7 @@
 #include <string.h>
 #include <time.h>
 
-void to_lower(char* c, char* b) {
+void to_lower(char *c, char *b) {
   if (*c == -48 && (*b >= -125 && *b <= -97)) {
     *b = *b + ('а' - 'А');
   }
@@ -17,14 +17,14 @@ void to_lower(char* c, char* b) {
   }
 }
 
-struct Question createQuestion(const char* text, const char* answer) {
+struct Question createQuestion(const char *text, const char *answer) {
   struct Question question;
   strcpy(question.text, text);
   strcpy(question.answer, answer);
   return question;
 }
 
-int checkAnswer(const char* userAnswer, const char* correctAnswer) {
+int checkAnswer(const char *userAnswer, const char *correctAnswer) {
   return strcmp(userAnswer, correctAnswer) == 0;
 }
 
