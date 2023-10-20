@@ -12,4 +12,3 @@ void shuffleQuestions(struct Question questions[], int numQuestions);
 int runQuiz(struct Question questions[], int numQuestions);
 
 #endif // QUIZ_H
-
