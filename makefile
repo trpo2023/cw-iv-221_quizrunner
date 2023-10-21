@@ -1,10 +1,10 @@
-#Имя компилятора
+# Имя компилятора
 CC = gcc
 
-#Опции компиляции
+# Опции компиляции
 CFLAGS = -Wall -Isrc -Itest
 
-#Каталоги с исходными файлами, объектными файлами и исполняемыми файлами
+# Каталоги с исходными файлами, объектными файлами и исполняемыми файлами
 SRC_DIR = src
 APP_DIR = $(SRC_DIR)/app
 LIB_DIR = $(SRC_DIR)/lib
@@ -14,7 +14,7 @@ TEST_DIR = test
 TEST_APP_DIR = $(TEST_DIR)/app
 TEST_LIB_DIR = $(TEST_DIR)/lib
 
-#Исходные файлы
+# Исходные файлы
 APP_SRCS = $(wildcard $(APP_DIR)/*.c)
 LIB_SRCS = $(wildcard $(LIB_DIR)/*.c)
 TEST_APP_SRCS = $(wildcard $(TEST_APP_DIR)/*.c)
@@ -65,5 +65,9 @@ $(OBJ_DIR)/%.o: $(TEST_LIB_DIR)/%.c
 clean:
 	rm -f $(APP_OBJS) $(LIB_OBJS) $(TARGET) $(TEST_APP_OBJS) $(TEST_LIB_OBJS) $(TEST_TARGET)
 
+# Запуск тестов
+runtest: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
 # Помечаем цели, которые не являются файлами
-.PHONY: all test clean
+.PHONY: all test clean runtest
