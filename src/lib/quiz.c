@@ -18,44 +18,6 @@ void to_lower(char* c, char* b)
     }
 }
 
-int getQuestionCount(const char* filePath)
-{
-    FILE* file = fopen(filePath, "r");
-    int count = 0;
-    char line[MAX_LINE_LENGTH];
-    while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
-        count++;
-    }
-    fclose(file);
-    // Делим на два, поскольку каждый вопрос состоит из двух строк
-    return count / 2;
-}
-
-struct Question* readQuestionsFromFile(const char* filePath)
-{
-    int questionCount = getQuestionCount(filePath);
-    struct Question* questions = calloc(questionCount, sizeof(struct Question));
-
-    FILE* file = fopen(filePath, "r");
-    char line[MAX_LINE_LENGTH];
-    int i = 0;
-    while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
-        if ((line[strlen(line) - 1]) == '\n') {
-            line[strlen(line) - 1] = '\0';
-        }
-
-        if (i % 2 == 0) {
-            strcpy(questions[i / 2].text, line);
-        } else {
-            strcpy(questions[i / 2].answer, line);
-        }
-        i++;
-    }
-    fclose(file);
-
-    return questions;
-}
-
 struct Question createQuestion(const char* text, const char* answer)
 {
     struct Question question;
@@ -69,7 +31,7 @@ int checkAnswer(const char* userAnswer, const char* correctAnswer)
     return strcmp(userAnswer, correctAnswer) == 0;
 }
 
-struct Question* shuffleQuestions(struct Question questions[], int numQuestions)
+void shuffleQuestions(struct Question questions[], int numQuestions)
 {
     srand(time(NULL));
     for (int i = numQuestions - 1; i > 0; i--) {

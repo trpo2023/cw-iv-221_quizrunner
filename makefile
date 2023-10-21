@@ -65,9 +65,5 @@ $(OBJ_DIR)/%.o: $(TEST_LIB_DIR)/%.c
 clean:
 	rm -f $(APP_OBJS) $(LIB_OBJS) $(TARGET) $(TEST_APP_OBJS) $(TEST_LIB_OBJS) $(TEST_TARGET)
 
-# Запуск тестов
-runtest: $(TEST_TARGET)
-	./$(TEST_TARGET)
-
 # Помечаем цели, которые не являются файлами
 .PHONY: all test clean runtest
