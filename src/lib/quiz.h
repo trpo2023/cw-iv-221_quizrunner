@@ -10,7 +10,8 @@ struct Question {
 
 struct Question createQuestion(const char* text, const char* answer);
 int checkAnswer(const char* userAnswer, const char* correctAnswer);
-struct Question* shuffleQuestions(struct Question questions[], int numQuestions);
+struct Question*
+shuffleQuestions(struct Question questions[], int numQuestions);
 int runQuiz(struct Question questions[], int numQuestions);
 int getQuestionCount(const char* filePath); // Объявление функции в .h файле
 struct Question*
