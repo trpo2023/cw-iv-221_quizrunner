@@ -19,6 +19,7 @@ APP_SRCS = $(wildcard $(APP_DIR)/*.c)
 LIB_SRCS = $(wildcard $(LIB_DIR)/*.c)
 TEST_APP_SRCS = $(wildcard $(TEST_APP_DIR)/*.c)
 TEST_LIB_SRCS = $(wildcard $(TEST_LIB_DIR)/*.c)
+TEST_SRCS = $(wildcard $(TEST_DIR)/*.c)
 
 # Имя исполняемого файла
 TARGET = $(BIN_DIR)/quiz_program
@@ -51,8 +52,9 @@ $(OBJ_DIR)/%.o: $(LIB_DIR)/%.c
 test: $(TEST_TARGET)
 
 # Компиляция исполняемого файла для тестов
-$(TEST_TARGET): $(TEST_APP_OBJS) $(TEST_LIB_OBJS) $(APP_OBJS) $(LIB_OBJS)
+$(TEST_TARGET): $(TEST_OBJS) $(APP_OBJS) $(LIB_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
+
 
 # Компиляция объектных файлов для тестов из исходных файлов при необходимости
 $(OBJ_DIR)/%.o: $(TEST_APP_DIR)/%.c
