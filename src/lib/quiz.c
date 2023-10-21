@@ -31,7 +31,7 @@ int checkAnswer(const char* userAnswer, const char* correctAnswer)
     return strcmp(userAnswer, correctAnswer) == 0;
 }
 
-struct Question *shuffleQuestions(struct Question questions[], int numQuestions)
+struct Question* shuffleQuestions(struct Question questions[], int numQuestions)
 {
     srand(time(NULL));
     for (int i = numQuestions - 1; i > 0; i--) {
