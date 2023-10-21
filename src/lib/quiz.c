@@ -18,7 +18,8 @@ void to_lower(char* c, char* b)
     }
 }
 
-int getQuestionCount(const char* filePath) {
+int getQuestionCount(const char* filePath)
+{
     FILE* file = fopen(filePath, "r");
     int count = 0;
     char line[MAX_LINE_LENGTH];
@@ -30,9 +31,11 @@ int getQuestionCount(const char* filePath) {
     return count / 2;
 }
 
-struct Question* readQuestionsFromFile(const char* filePath) {
+struct Question* readQuestionsFromFile(const char* filePath)
+{
     int questionCount = getQuestionCount(filePath);
-    struct Question* questions = malloc(questionCount * sizeof(struct Question));
+    struct Question* questions
+            = malloc(questionCount * sizeof(struct Question));
 
     FILE* file = fopen(filePath, "r");
     char line[MAX_LINE_LENGTH];
